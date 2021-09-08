@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tl-edges {
+  width: 100vw;
+  overflow: initial !important;
+  overflow-y: initial !important;
+}
