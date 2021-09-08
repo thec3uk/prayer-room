@@ -1,15 +1,5 @@
-# Software Crafts Gatsby Starter
+# Tim Creamer Prayer Room
 
-## Features
+## future ideas
 
-1. Tailwind CSS configured by default
-2. Minimal structure to let you build what you need (for now)
-3. React helmet
-4. Typescript support
-
-
-
-## To do
-
-
-2. Option to configure TailwindUI
+- Masonary Grid for the inspiration page (or just CSS grid with variable height)

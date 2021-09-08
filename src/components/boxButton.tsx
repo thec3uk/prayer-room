@@ -4,7 +4,7 @@ const BoxButton = ({
   onClickHandler,
   title,
 }: {
-  onClickHandler: (event: React.SyntheticEvent) => void;
+  onClickHandler: (event: React.SyntheticEvent | string) => void;
   title: string;
 }) => {
   return (

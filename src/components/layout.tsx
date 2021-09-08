@@ -10,33 +10,39 @@ const Layout: React.FC<PageProps> = ({
   title,
   showsubTitle,
   children,
+  menu,
   isHome = false,
 }: {
   seoTitle: string;
   title: string;
   showsubTitle: boolean;
   children: React.FC;
+  menu: React.FC;
   isHome: boolean;
 }) => {
   return (
     <>
       <SEO title={seoTitle} />
-      <div className="absolute insert-0 min-h-screen font-serif flex flex-col justify-start items-start pt-28 bg-gray-50">
-        <div className="mx-4">
-          <h1 className="text-6xl mb-6 text-gray-900">{title}</h1>
-          {showsubTitle && (
-            <AniLink
-              swipe
-              top="entry"
-              direction="left"
-              entryOffset={80}
-              to={"/about"}
-              className="text-xl underline uppercase font-sans text-gray-900">
-              The Tim Creamer Prayer Room
-            </AniLink>
-          )}
+      <div className="font-serif absolute insert-0 bg-gray-50 w-screen flex flex-row ">
+        <div className="min-h-screen flex flex-col justify-start items-start pt-28 w-screen md:min-w-min md:w-1/5 md:border-r md:shadow">
+          <div className="mx-4">
+            <h1 className="text-6xl mb-6 text-gray-900">{title}</h1>
+            {showsubTitle && (
+              <AniLink
+                swipe
+                top="entry"
+                direction="left"
+                entryOffset={80}
+                to={"/about"}
+                className="text-xl underline uppercase font-sans text-gray-900">
+                The Tim Creamer Prayer Room
+              </AniLink>
+            )}
+          </div>
+          <div className="block md:hidden">{children}</div>
+          <div className="my-auto">{menu}</div>
         </div>
-        <div className="my-auto">{children}</div>
+        <div className="hidden md:block md:w-4/5">{children}</div>
       </div>
       {!isHome && (
         <AniLink
