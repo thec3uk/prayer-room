@@ -41,6 +41,12 @@ const Layout: React.FC<PageProps> = ({
           </div>
           <div className="block md:hidden">{children}</div>
           <div className="my-auto">{menu}</div>
+          <p className="font-sans m-4 text-sm">
+            If you have any issues using this site then please contact{" "}
+            <a href="mailto:prayer@thec3.uk" className="select-all underline text-blue-700">
+              prayer@thec3.uk
+            </a>
+          </p>
         </div>
         <div className="hidden md:block md:w-4/5">{children}</div>
       </div>
