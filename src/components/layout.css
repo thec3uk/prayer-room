@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "culture";
+  src: url("../fonts/culture-webfont.woff2") format("woff2"), url("../fonts/culture-webfont.woff") format("woff"),
+    url("../fonts/culture-webfont.ttf") format("ttf");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

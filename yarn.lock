@@ -1154,6 +1154,16 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/dm-serif-display@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/dm-serif-display/-/dm-serif-display-4.5.0.tgz#255322e3bde35e9f11812b7affbe4d9395f59212"
+  integrity sha512-iFUuJ8m3GRpH+ZK8xYKtAj+X7LVn3mdpDbh+lqzPBRbRhwlQkM0AjTXtHwHe7CrD6JGbGrk1kHSCCQJt2IRmfg==
+
+"@fontsource/montserrat@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.1.tgz#64a33ffdb77bbc63484c0321710bed272cc5b16f"
+  integrity sha512-xdMkzsnFlzDt5Vj9+AWuUp4Vd9F3hYN2I0GTZZYscWN/bQ20wVOGtdWLO8Okfv7SZ9t/z39/EayAAt+f/8tAvw==
+
 "@gatsbyjs/reach-router@^1.3.6":
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/reach-router/-/reach-router-1.3.6.tgz#4e8225836959be247890b66f21a3198a0589e34d"
@@ -3980,7 +3990,7 @@ babel-preset-gatsby@^1.12.0:
     gatsby-core-utils "^2.12.0"
     gatsby-legacy-polyfills "^1.12.0"
 
-babel-runtime@^6.23.0:
+babel-runtime@^6.23.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
@@ -8294,6 +8304,14 @@ gatsby-plugin-utils@^1.12.0:
   integrity sha512-IlftnoN9ZNw+nd9HLvCyTajf/SHfV7WOOsQVWsKJmRPoZaeWwAFdtrMXKyqMPVSc1D1JfCg/qxTef+5ypch7OA==
   dependencies:
     joi "^17.2.1"
+
+gatsby-plugin-web-font-loader@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-web-font-loader/-/gatsby-plugin-web-font-loader-1.0.4.tgz#c50bdb0c1980110b3fd213a5be70feb2459514c3"
+  integrity sha512-3c39bX9CcsYJQFhhmTyjuMJSqpld2rX+HsTOxP9k1PKFR4Rvo3lpzBW4d1tVpmUesR8BNL6u9eHT7/XksS1iog==
+  dependencies:
+    babel-runtime "^6.26.0"
+    webfontloader "^1.6.28"
 
 gatsby-react-router-scroll@^4.12.0:
   version "4.12.0"
@@ -17928,6 +17946,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
+
+webfontloader@^1.6.28:
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
+  integrity sha1-23hhKSU8tujq5UwvsF+HCvZnW64=
 
 webidl-conversions@^4.0.2:
   version "4.0.2"
