@@ -2,11 +2,9 @@
 
 ## Todo
 
-- blue colours - adjust config to be accurate
-- hover colours and accessibility
-
 - setup fast meetups
 - setup redirect
+- hover colours and accessibility
 
 ## future ideas
 

@@ -7,6 +7,6 @@ module.exports = {
   //   favicon: "static/images/manifest-logo.png", // Used for manifest favicon generation
   shortName: "C3", // shortname for manifest. MUST be shorter than 12 characters
   author: "Andrew Miller", // Author for schemaORGJSONLD
-  themeColor: "#202945",
-  backgroundColor: "#f05356",
+  themeColor: "#3DB4F5",
+  backgroundColor: "#3DB4F5",
 };

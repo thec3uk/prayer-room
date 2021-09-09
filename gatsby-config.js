@@ -116,13 +116,13 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Software Crafts",
-        short_name: "Software Crafts",
+        name: "The Tim Creamer Prayer Room",
+        short_name: "Prayer Room",
         start_url: "/",
-        background_color: "#f1ece1",
-        theme_color: "#f1ece1",
+        background_color: "#3DB4F5",
+        theme_color: "#3DB4F5",
         display: "minimal-ui",
-        icon: "static/favicon.ico", // This path is relative to the root of the site.
+        icon: "static/manifest-logo.png", // This path is relative to the root of the site.
       },
     },
   ],
