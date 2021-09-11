@@ -15,8 +15,10 @@ const MeetupCard = ({ node }) => {
   const formattedShortEndDate = dayjs(node.end_time).format("HH:mm");
   // 2021-09-09T20:00:00+01:00
   const urlStartDate = dayjs(node.start_time).format("YYYY-MM-DDTHH:mm:ssZ");
+  const eventStarted = dayjs().isAfter(dayjs(node.start_time));
+
   return (
-    <div className="text-gray-50 shadow bg-blue-700 p-4 rounded flex flex-col " key={node.id}>
+    <div className="text-gray-50 shadow bg-blue-700 p-4 rounded flex flex-col">
       <h3 className=" text-xl font-sans capitalize">
         {formattedShortStartDate} - {formattedShortEndDate}
       </h3>
@@ -28,18 +30,21 @@ const MeetupCard = ({ node }) => {
                     {node.invitees_counter.active}/{node.invitees_counter.limit}
                   </span> */}
         </div>
-        {/* <a
-          className="capitalize p-2 border bg-blue-400 text-gray-900 rounded hover:bg-blue-500 font-sans flex flex-row"
-          href={node.location.join_url}>
-          <VideoCameraIcon className="h-6 w-6 mr-2" />
-          <span>Join ({node.location.type})</span>
-        </a> */}
-        <a
-          className="capitalize p-2 border bg-blue-400 text-gray-900 rounded hover:bg-blue-500 hover:text-gray-100 font-sans flex flex-row"
-          href={`${node.event_type.scheduling_url}/${urlStartDate}`}>
-          <VideoCameraIcon className="h-6 w-6 mr-2" />
-          <span>Sign up</span>
-        </a>
+        {eventStarted ? (
+          <a
+            className="capitalize p-2 border bg-blue-400 text-gray-900 rounded hover:bg-blue-500 font-sans flex flex-row"
+            href={node.location.join_url}>
+            <VideoCameraIcon className="h-6 w-6 mr-2" />
+            <span>Join ({node.location.type})</span>
+          </a>
+        ) : (
+          <a
+            className="capitalize p-2 border bg-blue-400 text-gray-900 rounded hover:bg-blue-500 hover:text-gray-100 font-sans flex flex-row"
+            href={`${node.event_type.scheduling_url}/${urlStartDate}`}>
+            <VideoCameraIcon className="h-6 w-6 mr-2" />
+            <span>Sign up</span>
+          </a>
+        )}
       </div>
     </div>
   );
@@ -55,11 +60,11 @@ const PrayerMeetupPage = ({ data }) => {
         <div>
           {data.allScheduledEvent.group.map(({ edges, field, fieldValue }) => {
             return (
-              <div className="mx-4 mt-16">
+              <div key={fieldValue} className="mx-4 mt-16">
                 <h3 className="text-gray-900 text-xl mb-4">{fieldValue}</h3>
                 <div className="relative grid grid-flow-row gap-4 grid-cols-1 md:grid-cols-3">
                   {edges.map(({ node }) => (
-                    <MeetupCard node={node} />
+                    <MeetupCard key={node.id} node={node} />
                   ))}
                 </div>
               </div>
