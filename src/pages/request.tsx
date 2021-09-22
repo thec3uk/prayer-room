@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby-link";
 
 import Layout from "../components/layout";
 import BoxButton from "../components/boxButton";
@@ -38,7 +39,33 @@ const TextArea = ({ label, name }) => {
   );
 };
 
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
 const PrayerRequestPage = () => {
+  const [state, setState] = React.useState({});
+
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute("action")))
+      .catch((error) => alert(error));
+  };
   return (
     <Layout title={"make a prayer request"}>
       <div>
@@ -49,8 +76,10 @@ const PrayerRequestPage = () => {
           <form
             name="prayer-request"
             method="post"
+            action="/thanks/"
             className="mx-2 space-y-2"
             data-netlify="true"
+            onSubmit={handleSubmit}
             data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="prayer-request" />
             <Input label="Name" name="name" />
