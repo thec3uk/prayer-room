@@ -1,28 +1,28 @@
 const axios = require("axios");
+const NetlifyAPI = require("netlify");
 require("dotenv").config();
-// constants for your GraphQL Post and Author types
-const EVENT_NODE_TYPE = `ScheduledEvent`;
-const EVENT_TYPE_NODE_TYPE = `EventType`;
 
-const headers = {
-  "Content-Type": "application/json",
-  Authorization: `Bearer ${process.env.CALENDLY_API_TOKEN}`,
-};
+const sourceCalendlyNodes = async (createNode, createContentDigest, createNodeId) => {
+  const EVENT_NODE_TYPE = `ScheduledEvent`;
+  const EVENT_TYPE_NODE_TYPE = `EventType`;
 
-const userOptions = {
-  method: "GET",
-  url: "https://api.calendly.com/users/me",
-  headers: headers,
-};
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${process.env.CALENDLY_API_TOKEN}`,
+  };
 
-const scheduledEventOptions = {
-  method: "GET",
-  headers: headers,
-  url: "https://api.calendly.com/scheduled_events",
-};
+  const userOptions = {
+    method: "GET",
+    url: "https://api.calendly.com/users/me",
+    headers: headers,
+  };
 
-exports.sourceNodes = async ({ actions, createContentDigest, createNodeId, getNodesByType }) => {
-  const { createNode } = actions;
+  const scheduledEventOptions = {
+    method: "GET",
+    headers: headers,
+    url: "https://api.calendly.com/scheduled_events",
+  };
+
   const userResponse = await axios.request(userOptions);
   const response = await axios.request({
     params: {
@@ -69,6 +69,32 @@ exports.sourceNodes = async ({ actions, createContentDigest, createNodeId, getNo
       },
     })
   );
+};
+
+const sourceNetlifyForms = async (createNode, createContentDigest, createNodeId) => {
+  const SUBMISSION_NODE_TYPE = "PrayerRequest";
+  const client = new NetlifyAPI(process.env.NETLIFY_API_TOKEN);
+  const formSubmissions = await client.listFormSubmissions({ form_id: process.env.FORM_ID });
+  formSubmissions.forEach((submission) =>
+    createNode({
+      ...submission,
+      submission_date: new Date(submission.created_at).toDateString(),
+      id: createNodeId(`${SUBMISSION_NODE_TYPE}-${submission.id}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: SUBMISSION_NODE_TYPE,
+        content: JSON.stringify(submission),
+        contentDigest: createContentDigest(submission),
+      },
+    })
+  );
+};
+
+exports.sourceNodes = async ({ actions, createContentDigest, createNodeId }) => {
+  const { createNode } = actions;
+  await sourceCalendlyNodes(createNode, createContentDigest, createNodeId);
+  await sourceNetlifyForms(createNode, createContentDigest, createNodeId);
   return;
 };
 

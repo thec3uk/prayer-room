@@ -4,7 +4,7 @@ import { navigate } from "gatsby-link";
 import Layout from "../components/layout";
 import BoxButton from "../components/boxButton";
 
-const Input = ({ label, name }) => {
+const Input = ({ label, name, onChange }) => {
   return (
     <div>
       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -15,6 +15,7 @@ const Input = ({ label, name }) => {
           type="text"
           name={name}
           id={`id_${name}`}
+          onChange={onChange}
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
         />
       </div>
@@ -22,7 +23,7 @@ const Input = ({ label, name }) => {
   );
 };
 
-const TextArea = ({ label, name }) => {
+const TextArea = ({ label, name, onChange }) => {
   return (
     <div>
       <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -32,6 +33,7 @@ const TextArea = ({ label, name }) => {
         <textarea
           name={name}
           id={`id_${name}`}
+          onChange={onChange}
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
         />
       </div>
@@ -81,12 +83,17 @@ const PrayerRequestPage = () => {
             data-netlify="true"
             onSubmit={handleSubmit}
             data-netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="prayer-request" />
-            <Input label="Name" name="name" />
-            <Input label="Prayer Title" name="title" />
-            <TextArea label="Prayer" name="prayer" />
+            <input type="hidden" name="form-name" value="prayer-request" />{" "}
+            <p hidden>
+              <label>
+                Don’t fill this out: <input name="bot-field" onChange={handleChange} />
+              </label>
+            </p>
+            <Input onChange={handleChange} label="Name" name="name" />
+            <Input onChange={handleChange} label="Prayer Title" name="title" />
+            <TextArea onChange={handleChange} label="Prayer" name="prayer" />
             <div className="pt-4 -mx-2">
-              <BoxButton onClickHandler={(e) => alert(e)} title="Share your prayer" alignment="right" />
+              <BoxButton title="Share your prayer" alignment="right" />
             </div>
           </form>
         </div>
