@@ -9,7 +9,7 @@ const Menu = () => {
     <div className="relative">
       <BoxLink to={"/meetup"} title={"schedule a prayer meetup"} />
       <BoxLink to={"/upcoming"} title={"join an upcoming meetup"} />
-      {/* <BoxLink to={"/request"} title={"make a prayer request"} /> */}
+      <BoxLink to={"/request"} title={"make a prayer request"} />
       {/* <BoxLink to={"/list"} title={"pray for someone"} /> */}
       <BoxLink to={"/inspiration"} title={"prayer inspiration"} />
     </div>

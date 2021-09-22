@@ -13,9 +13,9 @@ module.exports = {
       }),
       colors: {
         blue: {
-          "400": "#3DB4F5",
-          "500": "#007BB8",
-          "700": "#1E44A7",
+          400: "#3DB4F5",
+          500: "#007BB8",
+          700: "#1E44A7",
         },
       },
     },
@@ -25,7 +25,7 @@ module.exports = {
       backgroundColor: ["hover-hover", "hover-none"],
     },
   },
-  plugins: [require("tailwindcss-touch")()],
+  plugins: [require("tailwindcss-touch")(), require("@tailwindcss/forms")],
 };
 
 // blue: {
