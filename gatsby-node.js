@@ -74,7 +74,13 @@ const sourceCalendlyNodes = async (createNode, createContentDigest, createNodeId
 const sourceNetlifyForms = async (createNode, createContentDigest, createNodeId) => {
   const SUBMISSION_NODE_TYPE = "PrayerRequest";
   const client = new NetlifyAPI(process.env.NETLIFY_API_TOKEN);
-  const formSubmissions = await client.listFormSubmissions({ form_id: process.env.FORM_ID });
+  try {
+    const formSubmissions = await client.listFormSubmissions({ form_id: process.env.FORM_ID });
+  } catch (error) {
+    console.log(error);
+    return;
+  }
+
   formSubmissions.forEach((submission) =>
     createNode({
       ...submission,
