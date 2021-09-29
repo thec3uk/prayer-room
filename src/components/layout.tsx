@@ -24,8 +24,8 @@ const Layout: React.FC<PageProps> = ({
     <>
       <SEO title={seoTitle} />
       <div className="font-serif absolute insert-0 bg-gray-50 w-screen flex flex-row ">
-        <div className="min-h-screen flex flex-col justify-start items-start pt-28 w-screen md:min-w-min md:w-1/5 md:border-r md:shadow">
-          <div className="mx-4">
+        <div className="min-h-screen flex flex-col justify-start items-start pt-28 w-screen md:min-w-min md:w-1/5 md:border-r md:shadow overflow-y-hidden h-screen">
+          <div className="px-4">
             <h1 className="text-6xl mb-6 text-gray-900">{title}</h1>
             {showsubTitle && (
               <AniLink
@@ -39,8 +39,8 @@ const Layout: React.FC<PageProps> = ({
               </AniLink>
             )}
           </div>
-          <div className="block md:hidden">{children}</div>
-          <div className="my-auto">{menu}</div>
+          <div className="block md:hidden overflow-y-scroll">{children}</div>
+          <div className="my-auto md:block w-full">{menu}</div>
           <p className="font-sans m-4 text-sm">
             If you have any issues using this site then please contact{" "}
             <a href="mailto:prayer@thec3.uk" className="select-all underline text-blue-700">

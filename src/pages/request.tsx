@@ -3,17 +3,19 @@ import { navigate } from "gatsby-link";
 
 import Layout from "../components/layout";
 import BoxButton from "../components/boxButton";
+import PrayerPraiseToggle from "../components/prayerPraise";
 
-const Input = ({ label, name, onChange }) => {
+const Input = ({ label, name, onChange, required = false }) => {
   return (
     <div>
-      <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+      <label htmlFor="email" className="block text-sm font-medium capitalize text-gray-700">
         {label}
       </label>
       <div className="mt-1">
         <input
           type="text"
           name={name}
+          required={required}
           id={`id_${name}`}
           onChange={onChange}
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
@@ -26,13 +28,14 @@ const Input = ({ label, name, onChange }) => {
 const TextArea = ({ label, name, onChange }) => {
   return (
     <div>
-      <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+      <label htmlFor="email" className="block text-sm font-medium capitalize text-gray-700">
         {label}
       </label>
       <div className="mt-1">
         <textarea
           name={name}
           id={`id_${name}`}
+          required
           onChange={onChange}
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
         />
@@ -49,6 +52,8 @@ function encode(data) {
 
 const PrayerRequestPage = () => {
   const [state, setState] = React.useState({});
+  const [isPrayer, setIsPrayer] = React.useState(false);
+  const prayerString = isPrayer ? "praise" : "prayer";
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -69,10 +74,10 @@ const PrayerRequestPage = () => {
       .catch((error) => alert(error));
   };
   return (
-    <Layout title={"make a prayer request"}>
+    <Layout title={`make a ${prayerString} request`}>
       <div>
         <div className="w-screen md:w-full bg-gray-500 text-gray-50 px-4 py-2 text-lg font-sans shadow mb-24">
-          Submit a public prayer request
+          Submit a public {prayerString} request
         </div>
         <div className="relative">
           <form
@@ -90,10 +95,11 @@ const PrayerRequestPage = () => {
               </label>
             </p>
             <Input onChange={handleChange} label="Name" name="name" />
-            <Input onChange={handleChange} label="Prayer Title" name="title" />
-            <TextArea onChange={handleChange} label="Prayer" name="prayer" />
+            <PrayerPraiseToggle enabled={isPrayer} setEnabled={setIsPrayer} />
+            <Input onChange={handleChange} label={`${prayerString} Title`} name="title" required />
+            <TextArea onChange={handleChange} label={prayerString} name="prayer" />
             <div className="pt-4 -mx-2">
-              <BoxButton title="Share your prayer" alignment="right" />
+              <BoxButton title={`Share your ${prayerString}`} alignment="right" />
             </div>
           </form>
         </div>
