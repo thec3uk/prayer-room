@@ -7,6 +7,7 @@
   - desktop
 - submit a prayer
   - desktop
+  - button could be more responsive to what's happening
 - notifications to the prayer team
 - improve navigation (too many links on the homepage?)
   - interim pages?

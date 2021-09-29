@@ -52,8 +52,8 @@ function encode(data) {
 
 const PrayerRequestPage = () => {
   const [state, setState] = React.useState({});
-  const [isPrayer, setIsPrayer] = React.useState(false);
-  const prayerString = isPrayer ? "praise" : "prayer";
+  const [isPraise, setIsPraise] = React.useState(false);
+  const prayerString = isPraise ? "praise" : "prayer";
 
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -67,6 +67,7 @@ const PrayerRequestPage = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": form.getAttribute("name"),
+        isPraise: isPraise,
         ...state,
       }),
     })
@@ -95,7 +96,7 @@ const PrayerRequestPage = () => {
               </label>
             </p>
             <Input onChange={handleChange} label="Name" name="name" />
-            <PrayerPraiseToggle enabled={isPrayer} setEnabled={setIsPrayer} />
+            <PrayerPraiseToggle enabled={isPraise} setEnabled={setIsPraise} />
             <Input onChange={handleChange} label={`${prayerString} Title`} name="title" required />
             <TextArea onChange={handleChange} label={prayerString} name="prayer" />
             <div className="pt-4 -mx-2">

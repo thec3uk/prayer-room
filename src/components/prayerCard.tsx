@@ -12,7 +12,7 @@ const PrayerCard = ({ node }) => {
   return (
     <Card title={node.human_fields.Title}>
       <div className="flex flex-col justify-start space-y-2 w-full font-sans">
-        <div>{node.human_fields.Prayer}</div>
+        <div className="whitespace-pre-line">{node.human_fields.Prayer}</div>
         <div className="flex flex-row items-end justify-between">
           <div className="flex flex-row">{node.human_fields.Name}</div>
           <button
