@@ -36,7 +36,7 @@ const TextArea = ({ label, name, onChange }) => {
           name={name}
           id={`id_${name}`}
           required
-          rows={10}
+          rows={7}
           onChange={onChange}
           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
         />
@@ -91,7 +91,7 @@ const PrayerRequestPage = () => {
             onSubmit={handleSubmit}
             data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="prayer-request" />{" "}
-            <input type="hidden" name="is_praise" value={prayerString} />
+            <input type="hidden" name="type" value={prayerString} />
             <p hidden>
               <label>
                 Don’t fill this out: <input name="bot-field" onChange={handleChange} />
