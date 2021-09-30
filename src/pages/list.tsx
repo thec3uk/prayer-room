@@ -21,7 +21,7 @@ const PrayerListPage = ({ data }) => {
         <div className="w-screen bg-gray-600 text-gray-50 px-4 py-2 text-lg font-sans shadow mb-8">
           See prayer request from others and take some time to pray
         </div>
-        {/* <GroupedList group={data.allPrayerRequest.group} Component={PrayerCard} /> */}
+        <GroupedList group={data.allPrayerRequest.group} Component={PrayerCard} />
       </div>
     </Layout>
   );
@@ -29,27 +29,27 @@ const PrayerListPage = ({ data }) => {
 
 export default PrayerListPage;
 
-// export const query = graphql`
-//   query Forms {
-//     allPrayerRequest {
-//       group(field: submission_date) {
-//         edges {
-//           node {
-//             id
-//             human_fields {
-//               Name
-//               Prayer
-//               Title
-//             }
-//             ordered_human_fields {
-//               name
-//               title
-//               value
-//             }
-//           }
-//         }
-//         fieldValue
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  query Forms {
+    allPrayerRequest {
+      group(field: submission_date) {
+        edges {
+          node {
+            id
+            human_fields {
+              Name
+              Prayer
+              Title
+            }
+            ordered_human_fields {
+              name
+              title
+              value
+            }
+          }
+        }
+        fieldValue
+      }
+    }
+  }
+`;
