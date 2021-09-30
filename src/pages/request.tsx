@@ -91,7 +91,7 @@ const PrayerRequestPage = () => {
             onSubmit={handleSubmit}
             data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="prayer-request" />{" "}
-            <input type="hidden" name="is_praise" value={isPraise.toString()} />
+            <input type="hidden" name="is_praise" value={`${isPraise.toString()}`} />
             <p hidden>
               <label>
                 Don’t fill this out: <input name="bot-field" onChange={handleChange} />
