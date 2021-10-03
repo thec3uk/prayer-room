@@ -18,7 +18,7 @@ const PrayerListPage = ({ data }) => {
         </>
       }>
       <div className="">
-        <div className="w-screen bg-gray-600 text-gray-50 px-4 py-2 text-lg font-sans shadow mb-8">
+        <div className="w-screen  md:w-full bg-gray-600 text-gray-50 px-4 py-2 text-lg font-sans shadow mb-8">
           See prayer request from others and take some time to pray
         </div>
         <GroupedList group={data.allPrayerRequest.group} Component={PrayerCard} />
@@ -40,6 +40,7 @@ export const query = graphql`
               Name
               Prayer
               Title
+              Type
             }
             ordered_human_fields {
               name

@@ -5,10 +5,19 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import MeetupCard from "../components/meetupCard";
 import GroupedList from "../components/groupedList";
+import BoxLink from "../components/boxLink";
 
 const PrayerMeetupPage = ({ data }) => {
   return (
-    <Layout title={"join a meetup"}>
+    <Layout
+      title={"join a meetup"}
+      menu={
+        <>
+          <div className="w-full -mb-4 mt-6 z-50">
+            <BoxLink title="Schedule a meeting" alignment="right" to="/meetup" />
+          </div>
+        </>
+      }>
       <div>
         <div className="w-screen md:w-full bg-gray-600 text-gray-50 px-4 py-2 text-lg font-sans shadow mb-24">
           See upcoming prayer meetups
