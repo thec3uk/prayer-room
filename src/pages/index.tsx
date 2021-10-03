@@ -7,11 +7,11 @@ import { useLayoutContext } from "../context/layout";
 const Menu = () => {
   return (
     <div className="relative">
-      <BoxLink to={"/meetup"} title={"schedule a prayer meetup"} />
-      <BoxLink to={"/upcoming"} title={"join an upcoming meetup"} />
+      {/* <BoxLink to={"/meetup"} title={"schedule a prayer meetup"} /> */}
+      <BoxLink to={"/upcoming"} title={"prayer meetings"} />
       {/* <BoxLink to={"/request"} title={"make a prayer request"} /> */}
-      {/* <BoxLink to={"/list"} title={"pray for someone"} /> */}
-      <BoxLink to={"/inspiration"} title={"prayer inspiration"} />
+      <BoxLink to={"/list"} title={"public prayers"} />
+      <BoxLink to={"/inspiration"} title={"inspiration"} />
     </div>
   );
 };
