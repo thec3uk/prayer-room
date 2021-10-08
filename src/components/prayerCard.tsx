@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
@@ -12,6 +12,22 @@ const PrayerCard = ({ node }) => {
 
   const cardClasses = node.human_fields.Type === "praise" ? "bg-blue-400" : "bg-blue-700";
   const buttonClasses = node.human_fields.Type === "praise" ? "bg-blue-700" : "bg-blue-400";
+
+  useEffect(() => {
+    const pData = JSON.parse(window.localStorage.getItem(node.human_fields.Type) as string);
+    setHasPrayed(pData ? pData[node.id] : 0);
+  });
+
+  const onClick = () => {
+    const newCount = Number(hasPrayed) + 1;
+    setHasPrayed(newCount);
+    const pData = JSON.parse(window.localStorage.getItem(node.human_fields.Type) as string);
+
+    window.localStorage.setItem(
+      node.human_fields.Type,
+      JSON.stringify({ ...pData, [node.id]: newCount as unknown as string })
+    );
+  };
   return (
     <Card title={node.human_fields.Title} classes={cardClasses}>
       <div className="flex flex-col justify-start space-y-2 w-full font-sans">
@@ -20,7 +36,7 @@ const PrayerCard = ({ node }) => {
           <div className="flex flex-row">{node.human_fields.Name}</div>
           <button
             className={`capitalize p-2 border text-gray-100 rounded hover:bg-blue-500 font-sans flex flex-row ${buttonClasses}`}
-            onClick={() => setHasPrayed(hasPrayed + 1)}>
+            onClick={onClick}>
             {node.human_fields.Type === "praise" ? (
               <span role="img" aria-label="party popper" className="pr-2">
                 🎉
