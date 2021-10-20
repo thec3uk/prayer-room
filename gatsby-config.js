@@ -23,20 +23,6 @@ module.exports = {
     ...config,
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-source-sanity`,
-    //   options: {
-    //     projectId: `exwdbh8u`,
-    //     dataset: `production`,
-    //     // a token with read permissions is required
-    //     // if you have a private dataset
-    //     token: process.env.SANITY_TOKEN,
-
-    //     // If the Sanity GraphQL API was deployed using `--tag <name>`,
-    //     // use `graphqlTag` to specify the tag name. Defaults to `default`.
-    //     graphqlTag: "default",
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-transition-link`,
       // options: {
@@ -95,15 +81,18 @@ module.exports = {
         // provided to the function, as seen below. This allows you to use
         // different HTML serializer logic for each field if necessary.
         // See: https://prismic.io/docs/nodejs/beyond-the-api/html-serializer
-        htmlSerializer: ({ node, key, value }) => (type, element, content, children) => {
-          // Your HTML serializer
-        },
+        htmlSerializer:
+          ({ node, key, value }) =>
+          (type, element, content, children) => {
+            // Your HTML serializer
+          },
       },
     },
     "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-image",
     {
       resolve: "gatsby-plugin-typescript",
       options: {

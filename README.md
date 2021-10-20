@@ -2,16 +2,13 @@
 
 ## todo
 
-- submit a prayer
-
-  - button could be more responsive to what's happening
-
 - pattern not rendering correctly?
+- sort meetings by date = needs to be in JS
 
 ## future ideas
 
 - limit the amount that can be clicked?
-- marking a prayer as answered?
+- marking a prayer as answered? - replace forms with airtable?
 
 - OAuth with ChurchSuite
   - then prefill or one click sign up

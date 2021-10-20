@@ -2,7 +2,7 @@ import React from "react";
 
 const GroupedList = ({ group, Component }) => {
   return (
-    <div className="space-y-8 overflow-y-scroll">
+    <div className="space-y-8 overflow-y-scroll py-2">
       {group.map(({ edges, fieldValue }) => {
         return (
           <div key={fieldValue} className="mx-4 md:bg-gray-50 rounded shadow md:p-4">
