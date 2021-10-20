@@ -2,7 +2,6 @@
 
 ## todo
 
-- pattern not rendering correctly?
 - sort meetings by date = needs to be in JS
 
 ## future ideas
