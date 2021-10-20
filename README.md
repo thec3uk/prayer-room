@@ -1,12 +1,9 @@
 # Tim Creamer Prayer Room
 
-## todo
-
-- sort meetings by date = needs to be in JS
-
 ## future ideas
 
-- limit the amount that can be clicked?
+- Allow customisation/delegation of who can be host of the Zoom call
+- limit the amount that prayer/praise can be clicked?
 - marking a prayer as answered? - replace forms with airtable?
 
 - OAuth with ChurchSuite

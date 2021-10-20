@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import dayjs from "dayjs";
-import advancedFormat from "dayjs/plugin/advancedFormat";
-
 import Card from "../components/card";
-
-dayjs.extend(advancedFormat);
 
 const PrayerCard = ({ node }) => {
   const [hasPrayed, setHasPrayed] = useState(0);
