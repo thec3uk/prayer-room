@@ -41,8 +41,7 @@ module.exports = {
         // You can generate an access token in the "API & Security" section of
         // your repository settings. Setting a "Callback URL" is not necessary.
         // The token will be listed under "Permanent access tokens".
-        accessToken:
-          "MC5ZU1lMT0JBQUFDSUFpVFpR.JO-_vWPvv71bORpdBO-_ve-_vSfvv71kE2Xvv73vv73vv73vv73vv71a77-9eDjvv73vv70oDnM7fQ",
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
 
         // Set a link resolver function used to process links in your content.
         // Fields with rich text formatting or links to internal content use this
