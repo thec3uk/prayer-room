@@ -73,7 +73,7 @@ const PrayerRequestPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    fetch("https://hooks.zapier.com/hooks/catch/4683456/b9d4qkg/", {
+    fetch(process.env.GATSBY_ZAPIER_WEBHOOK, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
