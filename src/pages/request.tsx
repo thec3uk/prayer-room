@@ -9,7 +9,7 @@ import BoxLink from "../components/boxLink";
 const Input = ({ label, name, onChange, required = false }) => {
   return (
     <div>
-      <label htmlFor="email" className="block text-sm font-medium capitalize text-gray-700">
+      <label htmlFor="email" className="block text-sm font-medium text-gray-700 capitalize">
         {label}
       </label>
       <div className="mt-1">
@@ -19,7 +19,7 @@ const Input = ({ label, name, onChange, required = false }) => {
           required={required}
           id={`id_${name}`}
           onChange={onChange}
-          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
     </div>
@@ -29,7 +29,7 @@ const Input = ({ label, name, onChange, required = false }) => {
 const TextArea = ({ label, name, onChange }) => {
   return (
     <div>
-      <label htmlFor="email" className="block text-sm font-medium capitalize text-gray-700">
+      <label htmlFor="email" className="block text-sm font-medium text-gray-700 capitalize">
         {label}
       </label>
       <div className="mt-1">
@@ -39,7 +39,7 @@ const TextArea = ({ label, name, onChange }) => {
           required
           rows={7}
           onChange={onChange}
-          className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
     </div>
@@ -73,11 +73,10 @@ const PrayerRequestPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    fetch("/", {
+    fetch("https://hooks.zapier.com/hooks/catch/4683456/b9d4qkg/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": form.getAttribute("name"),
         type: prayerString,
         ...state,
       }),
@@ -92,19 +91,12 @@ const PrayerRequestPage = () => {
   return (
     <Layout title={`make a ${prayerString} request`} menu={<Menu />}>
       <div>
-        <div className="w-screen md:w-full bg-gray-500 text-gray-50 px-4 py-2 text-lg font-sans shadow mb-24">
+        <div className="w-screen px-4 py-2 mb-24 font-sans text-lg bg-gray-500 shadow md:w-full text-gray-50">
           Submit a public {prayerString} request
         </div>
         <div className="relative md:h-full md:flex md:flex-col md:justify-center md:mx-32">
-          <div className="md:bg-gray-50 rounded md:shadow-lg md:p-4">
-            <form
-              name="prayer-request"
-              method="post"
-              action="/thanks/"
-              className="mx-2 space-y-2"
-              data-netlify="true"
-              onSubmit={handleSubmit}
-              data-netlify-honeypot="bot-field">
+          <div className="rounded md:bg-gray-50 md:shadow-lg md:p-4">
+            <form name="prayer-request" action="/thanks/" className="mx-2 space-y-2" onSubmit={handleSubmit}>
               <input type="hidden" name="form-name" value="prayer-request" />{" "}
               <input type="hidden" name="type" value={prayerString} />
               <p hidden>

@@ -24,6 +24,25 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY, // may instead specify via env, see below
+        concurrency: 5, // default, see using markdown and attachments for more information
+        tables: [
+          {
+            baseId: `appzh9VO8LUHq2PR4`,
+            tableName: `Prayer/Praise Requests`,
+            tableView: `Raw Submitted Requests`, // optional
+            queryName: `PrayerRequests`, // optionally default is false - makes all records in this table a separate node type, based on your tableView, or if not present, tableName, e.g. a table called "Fruit" would become "allAirtableFruit". Useful when pulling many airtables with similar structures or fields that have different types. See https://github.com/jbolda/gatsby-source-airtable/pull/52.
+            // mapping: { `CASE_SENSITIVE_COLUMN_NAME`: `VALUE_FORMAT` }, // optional, e.g. "text/markdown", "fileNode"
+            // tableLinks: [`CASE`, `SENSITIVE`, `COLUMN`, `NAMES`], // optional, for deep linking to records across tables.
+            // separateNodeType: false, // boolean, default is false, see the documentation on naming conflicts for more information
+            // separateMapType: false, // boolean, default is false, see the documentation on using markdown and attachments for more information
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-transition-link`,
       // options: {
       //   layout: require.resolve(`./src/components/layout.tsx`),
@@ -89,8 +108,8 @@ module.exports = {
     },
     "gatsby-plugin-postcss",
     "gatsby-plugin-react-helmet",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+    // "gatsby-transformer-sharp",
+    // "gatsby-plugin-sharp",
     "gatsby-plugin-image",
     {
       resolve: "gatsby-plugin-typescript",
