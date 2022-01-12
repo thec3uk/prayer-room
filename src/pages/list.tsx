@@ -12,16 +12,16 @@ const PrayerListPage = ({ data }) => {
       title={"pray for someone"}
       menu={
         <>
-          <div className="w-full -mb-4 mt-6 z-50">
+          <div className="z-50 w-full mt-6 -mb-4">
             <BoxLink title="Request a prayer" alignment="right" to="/request" />
           </div>
         </>
       }>
       <div className="">
-        <div className="w-screen  md:w-full bg-gray-600 text-gray-50 px-4 py-2 text-lg font-sans shadow mb-8">
+        <div className="w-screen px-4 py-2 mb-8 font-sans text-lg bg-gray-600 shadow md:w-full text-gray-50">
           See prayer request from others and take some time to pray
         </div>
-        <GroupedList group={data.allPrayerRequest.group} Component={PrayerCard} inverseSort />
+        <GroupedList group={data.allAirtable.group} Component={PrayerCard} inverseSort />
       </div>
     </Layout>
   );
@@ -30,23 +30,18 @@ const PrayerListPage = ({ data }) => {
 export default PrayerListPage;
 
 export const query = graphql`
-  query Forms {
-    allPrayerRequest {
-      group(field: submission_date) {
+  query PrayerRequest {
+    allAirtable(filter: { queryName: { eq: "PrayerRequests" } }) {
+      group(field: data___submission_date) {
         edges {
           node {
-            id
-            human_fields {
-              Name
-              Prayer
-              Title
-              Type
-            }
-            ordered_human_fields {
+            data {
               name
+              prayer
               title
-              value
+              type
             }
+            id
           }
         }
         fieldValue

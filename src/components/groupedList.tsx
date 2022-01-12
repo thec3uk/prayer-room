@@ -21,14 +21,14 @@ const compare = (first, second, inverseSort) => {
 
 const GroupedList = ({ group, Component, inverseSort = false }) => {
   return (
-    <div className="space-y-8 overflow-y-scroll py-2">
+    <div className="py-2 space-y-8 overflow-y-scroll">
       {group
         .sort((a, b) => compare(a, b, inverseSort))
         .map(({ edges, fieldValue }) => {
           return (
-            <div key={fieldValue} className="mx-4 md:bg-gray-50 rounded shadow md:p-4">
-              <h3 className="text-gray-900 text-xl mb-4">{fieldValue}</h3>
-              <div className="relative grid grid-flow-row gap-4 grid-cols-1 md:grid-cols-3">
+            <div key={fieldValue} className="mx-4 rounded shadow md:bg-gray-50 md:p-4">
+              <h3 className="mb-4 text-xl text-gray-900">{fieldValue}</h3>
+              <div className="relative grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-3">
                 {edges.map(({ node }) => (
                   <Component key={node.id} node={node} />
                 ))}
