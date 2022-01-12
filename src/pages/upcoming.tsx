@@ -29,7 +29,7 @@ const PrayerMeetupPage = ({ data }) => {
         {groupCall && (
           <div className="w-screen px-4 mb-8 text-lg font-extrabold text-center text-black md:w-full">
             <a href="https://zoom.us/j/6218249928?pwd=MnhyenA2clIrS0IwNEZ5b3hGMldMZz09">
-              <h3 className="block p-4 transform bg-blue-400 shadow hover:translate-y-px hover:shadow-sm hover:text-gray-50 hover:bg-blue-600">
+              <h3 className="block p-4 text-gray-900 capitalize transform bg-blue-400 border border-gray-900 rounded shadow hover:border-gray-50 hover:translate-y-px hover:shadow-sm hover:bg-blue-500 hover:text-gray-100 ">
                 Zoom Call for January Prayer &amp; Fasting
               </h3>
             </a>
