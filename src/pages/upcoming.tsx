@@ -7,6 +7,16 @@ import MeetupCard from "../components/meetupCard";
 import GroupedList from "../components/groupedList";
 import BoxLink from "../components/boxLink";
 
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+
+dayjs.extend(customParseFormat);
+
+const filterOldMeetups = (item) => {
+  const date = dayjs(item.end_time);
+  return date > dayjs();
+};
+
 const PrayerMeetupPage = ({ data }) => {
   const groupCall = true;
   return (
@@ -35,7 +45,7 @@ const PrayerMeetupPage = ({ data }) => {
             </a>
           </div>
         )}
-        <GroupedList group={data.allScheduledEvent.group} Component={MeetupCard} />
+        <GroupedList group={data.allScheduledEvent.group} Component={MeetupCard} filterFn={filterOldMeetups} />
       </div>
     </Layout>
   );
