@@ -18,7 +18,8 @@ const filterOldMeetups = (item) => {
 };
 
 const PrayerMeetupPage = ({ data }) => {
-  const groupCall = true;
+  // const groupCall = true;
+  const groupCall = data.airtable.data.Enabled;
   return (
     <Layout
       title={"join a meetup"}
@@ -37,12 +38,15 @@ const PrayerMeetupPage = ({ data }) => {
           See upcoming prayer meetups
         </div>
         {groupCall && (
-          <div className="w-screen px-4 mb-8 text-lg font-extrabold text-center text-black md:w-full">
-            <a href="https://zoom.us/j/6218249928?pwd=MnhyenA2clIrS0IwNEZ5b3hGMldMZz09">
-              <h3 className="block p-4 text-gray-900 capitalize transform bg-blue-400 border border-gray-900 rounded shadow hover:border-gray-50 hover:translate-y-px hover:shadow-sm hover:bg-blue-500 hover:text-gray-100 ">
-                Zoom Call for January Prayer &amp; Fasting
-              </h3>
-            </a>
+          <div className="flex justify-center">
+            <div className="w-screen px-4 mb-8 text-lg font-extrabold text-center text-black md:w-full md:p-3 md:shadow md:m-4 md:bg-gray-50">
+              <h2 className="w-full mb-4 text-2xl text-left underline">Group Prayer</h2>
+              <a href="https://zoom.us/j/6218249928?pwd=MnhyenA2clIrS0IwNEZ5b3hGMldMZz09">
+                <h3 className="block w-full p-4 text-gray-900 capitalize transform bg-blue-400 border border-gray-900 rounded shadow hover:border-gray-50 hover:translate-y-px hover:shadow-sm hover:bg-blue-500 hover:text-gray-100 ">
+                  {data.airtable.data.Button_Text}
+                </h3>
+              </a>
+            </div>
           </div>
         )}
         <GroupedList group={data.allScheduledEvent.group} Component={MeetupCard} filterFn={filterOldMeetups} />
@@ -64,6 +68,12 @@ export const query = graphql`
             ...Event
           }
         }
+      }
+    }
+    airtable(queryName: { eq: "AirtableSettings" }, data: { name: { eq: "Enable Group Prayer" } }) {
+      data {
+        Button_Text
+        Enabled
       }
     }
   }
