@@ -101,7 +101,7 @@ module.exports = {
           page: require("./src/schemas/page.json"),
           channel: require("./src/schemas/channel.json"),
           message: require("./src/schemas/message.json"),
-          resources: require("./src/schemas/resources.json"),
+          resource: require("./src/schemas/resources.json"),
           series: require("./src/schemas/series.json"),
           speaker: require("./src/schemas/speaker.json"),
         },
