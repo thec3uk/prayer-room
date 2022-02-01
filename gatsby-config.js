@@ -99,7 +99,11 @@ module.exports = {
           contact_information: require("./src/schemas/contact_information.json"),
           online_event: require("./src/schemas/online_event.json"),
           page: require("./src/schemas/page.json"),
-          impact_page: require("./src/schemas/page.json"),
+          channel: require("./src/schemas/channel.json"),
+          message: require("./src/schemas/message.json"),
+          resources: require("./src/schemas/resources.json"),
+          series: require("./src/schemas/series.json"),
+          speaker: require("./src/schemas/speaker.json"),
         },
         // Set an HTML serializer function used to process formatted content.
         // Fields with rich text formatting use this function to generate the
