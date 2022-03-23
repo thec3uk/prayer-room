@@ -30,7 +30,7 @@ const PrayerListPage = ({ data }) => {
 export default PrayerListPage;
 
 export const query = graphql`
-  query PrayerRequest {
+  query PrayerListRequest {
     allAirtable(filter: { queryName: { eq: "PrayerRequests" } }) {
       group(field: data___submission_date) {
         edges {

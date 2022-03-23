@@ -26,7 +26,7 @@ const PrayerMeetupPage = ({ data }) => {
       menu={
         <>
           <div className="z-50 w-full mt-6 -mb-4">
-            <BoxLink title="Schedule a meeting" alignment="right" to="/meetup" />
+            {/* <BoxLink title="Schedule a meeting" alignment="right" to="/meetup" /> */}
           </div>
         </>
       }>
