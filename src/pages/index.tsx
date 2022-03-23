@@ -13,8 +13,8 @@ const Menu = () => {
     <div className="relative">
       {/* <BoxLink to={"/meetup"} title={"schedule a prayer meetup"} /> */}
       <BoxLink to={"/upcoming"} title={"prayer meetings"} />
-      {/* <BoxLink to={"/request"} title={"make a prayer request"} /> */}
-      <BoxLink to={"/list"} title={"public prayers"} />
+      <BoxLink title="Request a prayer" to="/request" />
+      {/* <BoxLink to={"/list"} title={"public prayers"} /> */}
       <BoxLink to={"/inspiration"} title={"inspiration"} />
     </div>
   );
