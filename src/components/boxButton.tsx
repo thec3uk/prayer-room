@@ -11,21 +11,19 @@ const BoxButton = ({
   className?: string;
   alignment: "left" | "right";
 }) => {
+  const buttonClasses = "text-2xl font-sans px-4 transform -translate-y-4 block text-gray-900";
+  const wrapperClasses = "bg-blue-400 h-6 hover:h-auto hover:bg-blue-700 transition-colors duration-300 my-4 w-max";
   return (
     <>
       {alignment === "right" ? (
-        <div className="bg-blue-400 right-0 ml-auto mr-0 rounded-tl rounded-bl h-6 hover:h-auto hover:bg-blue-700 transition-colors duration-300 my-4 w-max">
-          <button
-            onClick={onClickHandler}
-            className="text-2xl font-sans px-4 transform -translate-y-4 block text-gray-900">
+        <div className={`right-0 ml-auto mr-0 rounded-tl rounded-bl ${wrapperClasses}`}>
+          <button onClick={onClickHandler} className={buttonClasses}>
             {title}
           </button>
         </div>
       ) : (
-        <div className="bg-blue-400 left-0 rounded-tr rounded-br h-6 hover:h-auto hover:bg-blue-700 transition-colors duration-300 my-4 w-max">
-          <button
-            onClick={onClickHandler}
-            className="text-2xl font-sans px-4 transform -translate-y-4 block text-gray-900">
+        <div className={`left-0 rounded-tr rounded-br ${wrapperClasses}`}>
+          <button onClick={onClickHandler} className={buttonClasses}>
             {title}
           </button>
         </div>
